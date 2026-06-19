@@ -109,6 +109,20 @@ kubectl delete deployment app
 kubectl get pods -o wide
 ```
 
+## debbug
+
+```sh
+kubectl describe pod aplication2
+```
+
+```sh
+kubectl logs aplication2
+```
+
+```sh
+kubectl exec -it aplication2 -- bash
+```
+
 ## reference documentation
 
 - check [the following blog about mikube basic steps](https://medium.com/@ravipatel.it/getting-started-with-minikube-a-beginners-guide-924fc1c9bb7d)
