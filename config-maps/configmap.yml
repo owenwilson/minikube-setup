@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-custom-configmap
+data:
+  nombre: example-custom-configmap
+  app_data: kubernetes-data
