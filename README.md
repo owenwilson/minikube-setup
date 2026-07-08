@@ -3,13 +3,13 @@
 ## minimal requirements
 
 > 2 CPUs or more
-> 
+>
 > 2GB of free memory
 >
 > 20GB of free disk space
-> 
+>
 > Internet connection
-> 
+>
 > Container or virtual machine manager, such as: Docker, QEMU, Hyperkit, Hyper-V, KVM, Parallels, Podman, VirtualBox, or VMware Fusion/Workstation
 
 ## install Minikube
@@ -25,15 +25,29 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-a
 
 ## start service
 
-- Example start minikube 
+- Example start minikube
 - Start a cluster using the docker driver:
+
 ```sh
 minikube start --driver=docker
 ```
 
 - To make docker the default driver
+
 ```sh
 minikube config set driver docker
+```
+
+- check env with minikube
+
+```sh
+minikube docker-env
+```
+
+- check images with minikube
+
+```sh
+minikube image ls
 ```
 
 - check [driver docker documentation](https://minikube.sigs.k8s.io/docs/drivers/docker/)
@@ -56,124 +70,113 @@ source ~/.bashrc
 kubectl get all
 ```
 
+```sh
+kubectl get all -A
+```
+
 ## kubernetes commands
+
 - help commands
+
 ```sh
 kubectl create --help
 ```
+
+- list nodes
+
+```sh
+kubectl get nodes
+```
+
 - create a pod using the deployment command in kubernetes
+
 ```sh
 kubectl create deployment --image nginx app
 ```
+
 ```sh
 kubectl create deployment --image nginx application
 ```
+
 - output information kubernetes
+
 ```sh
 kubectl get pods -o wide
 ```
+
 ```sh
 kubectl get pods -o json
 ```
+
 ```sh
 kubectl get pods -o yaml
 ```
+
 - delete pod
+
 ```sh
 kubectl describe pod app-6b97cd8cbd-6kpc9 | grep -E "Controlled By"
 output
 Controlled By:  ReplicaSet/app-6b97cd8cbd
 ```
+
 - if it is a deployment
+
 ```sh
 kubectl scale deployment app --replicas=0
 ```
+
 - if it is a ReplicaSet
+
 ```sh
 kubectl scale replicaset app --replicas=0
 ```
+
 - if it is a StateFullSet
+
 ```sh
 kubectl scale statefulset app --replicas=0
 ```
 
 - recommended option
+
 ```sh
 kubectl scale deployment app --replicas=0
 ```
+
 ```sh
 kubectl delete deployment app
 ```
+
 - check if exists pod deleted
+
 ```sh
 kubectl get pods -o wide
 ```
+
+## namespaces in kubernetes
+
+- check => [namespace/README.md](./namespace/README.md)
+
+## pods in kubernetes
+
+- check => [pods/README.md](./pods/README.md)
+
 ## storage in kubernetes
 
-- A StorageClass provides a way for administrators to describe the classes of storage they offer.
-```sh
-kubectl get storageclass
-```
+- check => [storage-class/README.md](./storage-class/README.md)
 
-- Create first volume
-```sh
-kubectl get persistentvolumeclain
-```
-```sh
-mkdir my-volume && cd my-volume
-```
-```sh
-touch pvc.yml
-```
-```sh
-kubectl apply -f pvc.yml
-```
-- check volumeclaim and volume
-```sh
-kubectl get persistentvolumeclain
-kubectl get persistentvolume
-```
-- create a deploy example
-```sh
-kubectl apply -f deploy.yml
-```
-```sh
-kubectl get pods
-```
-- run exec into nginx cluster
-```sh
-kubectl exec -it nginx-ID -- sh
-# cd /etc/mi-volumen
-# touch hi.txt
-```
-- we remove the pod to verify that the file still existed
-```sh
-kubectl delete pod nginx-ID
-```
-```sh
-kubectl get pods
-kubectl exec -it nginx-ID -- sh
-# ls -ls /etc/mi-volumen
-```
+## config-maps kubernetes
 
-### reference storage class
+- check => [config-maps/README.md](./config-maps/README.md)
 
-- check the following [documentation storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/)
----
+## secrets in kubernetes
 
-## debbug
+- check => [secrets/README.md](./secrets/README.md)
 
-```sh
-kubectl describe pod aplication2
-```
+## debbug in kubernetes
 
-```sh
-kubectl logs aplication2
-```
-
-```sh
-kubectl exec -it aplication2 -- bash
-```
+- check => [debug/README.md](./debug/README.md)
 
 ## add-on in minikube
 
