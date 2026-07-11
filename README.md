@@ -184,6 +184,34 @@ kubectl get pods -o wide
 minikube addons list
 ```
 
+## questions
+
+### kubernetes enginner
+#### core concepts
+
+- what: pods, services, deployments, namespaces?
+- why: fundamentals for any kubernetes workload?
+
+#### workload and orchestration
+
+- what: deplyments, StateFullSets, DaemonSets?
+- why: manage and scale applications reliably?
+
+#### networking and service discovery
+
+- what: service types, ingress, DNS, network policies.
+- why: connect components and expose applications.
+
+#### Data and storage management
+
+- what: persistent volumes, claims, storageClasses.
+- why: essential for stateful applications data persistence.
+
+#### monitoring and healt
+
+- what: logs, metrics, probes, events.
+- why: maitain performance and reliability.
+
 ## reference documentation
 
 - check [the following blog about mikube basic steps](https://medium.com/@ravipatel.it/getting-started-with-minikube-a-beginners-guide-924fc1c9bb7d)
